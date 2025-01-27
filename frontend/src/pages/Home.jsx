@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
@@ -38,7 +39,7 @@ const Home = () => {
       <br />
       <br />
       <div className="navigation">
-        <a href="/BookingForm" className="nav-link">Book a Hotel</a>
+        <Link to="orders" className="nav-link">Book a Hotel</Link>
       </div>
     </div>
   );
