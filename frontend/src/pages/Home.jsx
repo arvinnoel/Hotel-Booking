@@ -39,7 +39,7 @@ const Home = () => {
       <br />
       <br />
       <div className="navigation">
-        <Link to="orders" className="nav-link">Book a Hotel</Link>
+        <Link to="BookingForm" className="nav-link">Book a Hotel</Link>
       </div>
     </div>
   );
