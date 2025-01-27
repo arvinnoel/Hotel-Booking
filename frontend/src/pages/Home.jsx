@@ -4,14 +4,14 @@ import './Home.css';
 
 const Home = () => {
   const [hotels, setHotels] = useState([]);
-
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     fetchHotels();
   }, []);
 
   const fetchHotels = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/hotels');
+      const response = await axios.get(`${apiUrl}/api/hotels`);
       setHotels(response.data);
     } catch (error) {
       console.error('Error fetching hotels:', error);
@@ -27,7 +27,7 @@ const Home = () => {
         {hotels.map((hotel, index) => (
           <div key={index} className="hotel-card">
             <img
-              src={`http://localhost:5000/uploads/${hotel.hotelImage}`}
+              src={`${apiUrl}/uploads/${hotel.hotelImage}`}
               alt={hotel.hotelName}
               className="hotel-image"
             />

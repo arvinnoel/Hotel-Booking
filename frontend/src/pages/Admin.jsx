@@ -7,7 +7,7 @@ const Admin = () => {
   const [hotelName, setHotelName] = useState('');
   const [hotelImage, setHotelImage] = useState(null);
   const [hotels, setHotels] = useState([]);
-
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     fetchBookings();
     fetchHotels();
@@ -15,7 +15,7 @@ const Admin = () => {
 
   const fetchBookings = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/bookings');
+      const response = await axios.get(`${apiUrl}/api/admin/bookings`);
       setBookings(response.data);
     } catch (error) {
       console.error('Error fetching bookings:', error);
@@ -24,7 +24,7 @@ const Admin = () => {
 
   const fetchHotels = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/hotels');
+      const response = await axios.get(`${apiUrl}/api/hotels`);
       setHotels(response.data);
     } catch (error) {
       console.error('Error fetching hotels:', error);
@@ -39,7 +39,7 @@ const Admin = () => {
     formData.append('hotelImage', hotelImage);
 
     try {
-      await axios.post('http://localhost:5000/api/hotels', formData, {
+      await axios.post(`${apiUrl}/api/hotels`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -55,7 +55,7 @@ const Admin = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/hotels/${id}`);
+      await axios.delete(`${apiUrl}/api/hotels/${id}`);
       fetchHotels();
     } catch (error) {
       console.error(
@@ -122,7 +122,7 @@ const Admin = () => {
           <li key={index}>
             <div className="card">
               <img
-                src={`http://localhost:5000/uploads/${hotel.hotelImage}`}
+                src={`${apiUrl}/uploads/${hotel.hotelImage}`}
                 alt={hotel.hotelName}
               />
               <div className="card-content">

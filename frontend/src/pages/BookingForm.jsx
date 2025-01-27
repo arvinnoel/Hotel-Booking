@@ -8,9 +8,9 @@ const BookingForm = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [customerName, setCustomerName] = useState('');
-
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
-    axios.get('http://localhost:5000/api/hotels')
+    axios.get(`${apiUrl}/api/hotels`)
       .then(response => setHotels(response.data || [])) 
       .catch(error => console.error('Error fetching hotels:', error));
   }, []); 
@@ -19,7 +19,7 @@ const BookingForm = () => {
     e.preventDefault();
     const bookingData = { hotelName, startDate, endDate, customerName };
 
-    axios.post('http://localhost:5000/api/bookings', bookingData)
+    axios.post(`${apiUrl}/api/bookings`, bookingData)
       .then(() => {
         alert('Booking successful!');
         setHotelName('');
