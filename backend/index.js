@@ -22,7 +22,7 @@ app.use('/api/bookings', require('./routes/BookingRoutes'));
 app.use('/api/admin', require('./routes/AdminRoutes'));
 
 /* API HEALTH CHECK */
-app.get('/api', (req, res) => {
+app.get('/hotelbooking', (req, res) => {
     res.json({ status: 'API working' });
 });
 
